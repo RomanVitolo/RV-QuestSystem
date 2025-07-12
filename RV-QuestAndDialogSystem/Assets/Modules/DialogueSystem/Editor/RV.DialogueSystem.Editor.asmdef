@@ -1,0 +1,16 @@
+{
+    "name": "RV.DialogueSystem.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6521ca9b837f47d45bdf01fcc2736a28"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
