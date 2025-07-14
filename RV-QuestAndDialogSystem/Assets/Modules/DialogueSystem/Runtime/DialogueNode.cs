@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Modules.DialogueSystem.Runtime
 {
@@ -7,6 +9,7 @@ namespace Modules.DialogueSystem.Runtime
     {
         public string ID;
         public string Text;
-        public string[] Children;
+        public List<string> Children = new();
+        public Rect RectPosition = new Rect(0, 0, 200, 100);
     }
 }

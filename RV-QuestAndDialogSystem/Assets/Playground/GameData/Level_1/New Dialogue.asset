@@ -13,9 +13,58 @@ MonoBehaviour:
   m_Name: New Dialogue
   m_EditorClassIdentifier: 
   dialogueNodes:
-  - ID: 
-    Text: 
-    Children: []
-  - ID: 
-    Text: 
-    Children: []
+  - ID: a
+    Text: Hello
+    Children:
+    - b
+    - c
+    RectPosition:
+      serializedVersion: 2
+      x: 16
+      y: 83
+      width: 200
+      height: 200
+  - ID: b
+    Text: How are you?
+    Children:
+    - c
+    - d
+    RectPosition:
+      serializedVersion: 2
+      x: 384.71
+      y: 55.869995
+      width: 200
+      height: 200
+  - ID: c
+    Text: Go Away
+    Children:
+    - Pip
+    - Pop
+    RectPosition:
+      serializedVersion: 2
+      x: 621.70996
+      y: 134.87
+      width: 200
+      height: 200
+  - ID: e
+    Text: How are you?
+    Children:
+    - Pip
+    - Pop
+    RectPosition:
+      serializedVersion: 2
+      x: 115.70996
+      y: 455.87
+      width: 200
+      height: 100
+  - ID: c
+    Text: How are you?
+    Children:
+    - Pip
+    - Pop
+    RectPosition:
+      serializedVersion: 2
+      x: 386.70996
+      y: 369.87
+      width: 200
+      height: 100
