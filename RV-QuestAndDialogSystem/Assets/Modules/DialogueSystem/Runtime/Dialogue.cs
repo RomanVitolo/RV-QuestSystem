@@ -11,25 +11,29 @@ namespace Modules.DialogueSystem.Runtime
         
         private Dictionary<string, DialogueNode> _dialogueNodeLookup = new();
 
-#if Unity_Editor
+#if UNITY_EDITOR
         private void Awake()
         {
             if (dialogueNodes.Count == 0)
             {
-                dialogueNodes.Add(new DialogueNode());
+                var rootNode = new DialogueNode
+                {
+                    UniqueID = Guid.NewGuid().ToString()
+                };
+                dialogueNodes.Add(rootNode);
             }
         }
         
-       
-#endif
         private void OnValidate()
         {
             _dialogueNodeLookup.Clear();
             foreach (var dialogueNode in GetAllNodes())
             {
-                _dialogueNodeLookup[dialogueNode.ID] = dialogueNode;
+                _dialogueNodeLookup[dialogueNode.UniqueID] = dialogueNode;
             }
         }
+#endif
+        
 
         public IEnumerable<DialogueNode> GetAllNodes()
         {
@@ -48,6 +52,36 @@ namespace Modules.DialogueSystem.Runtime
                 }
             }
            
+        }
+
+        public void CreateNode(DialogueNode parent)
+        {
+            var newNode = new DialogueNode
+            {
+                UniqueID = Guid.NewGuid().ToString()
+            };
+            parent.Children.Add(newNode.UniqueID);
+            dialogueNodes.Add(newNode);
+            #if UNITY_EDITOR
+            OnValidate();
+            #endif
+        }
+
+        public void RemoveNode(DialogueNode nodeToRemove)
+        {
+            dialogueNodes.Remove(nodeToRemove);
+            #if UNITY_EDITOR
+            OnValidate();
+            #endif
+            CleanDanglingChildren(nodeToRemove);
+        }
+
+        private void CleanDanglingChildren(DialogueNode nodeToRemove)
+        {
+            foreach (var dialogueNode in GetAllNodes())
+            {
+                dialogueNode.Children.Remove(nodeToRemove.UniqueID);
+            }
         }
     }
 }
